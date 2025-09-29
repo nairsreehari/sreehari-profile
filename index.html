@@ -172,9 +172,8 @@ d<!DOCTYPE html>
     }
   ]
 }
-  </script>
-</head>
  <script>
+  // PDF button click
   document.querySelector("#packet-link")?.addEventListener("click", function(){
     if (window.gtag) {
       gtag("event", "download_pdf", {
@@ -183,7 +182,16 @@ d<!DOCTYPE html>
       });
     }
   });
+
+  // Optional: track email and LinkedIn clicks if you want
+  document.querySelector('a[href^="mailto:"]')?.addEventListener("click", function(){
+    if (window.gtag) gtag("event", "contact_click", {method: "email"});
+  });
+  document.querySelector('a[href*="linkedin.com/in/"]')?.addEventListener("click", function(){
+    if (window.gtag) gtag("event", "contact_click", {method: "linkedin"});
+  });
 </script>
+
 
 <body>
   
